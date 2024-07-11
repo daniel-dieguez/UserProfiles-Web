@@ -3,6 +3,9 @@ import { Container, Row, Col } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
+import ModalProfile from '../utils/ModalProfile';
+
+
 
 export default function NewProfile() {
 
@@ -10,7 +13,9 @@ export default function NewProfile() {
   const [perfil, setPerfil] = useState([]);
   const [error, setError] = useState('');
 
-  const URL = "http://localhost:9000/registro/v1/cv";
+  
+
+  const URL = "http://localhost:9000/lista/tareas";
 
 
 
@@ -40,36 +45,34 @@ export default function NewProfile() {
 
       if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
+          
       }
 
       console.log("Se ha borrado:", id_listado);
       const updatePerfil = perfil.filter((_, i) => i !== index);
       perfil(updatePerfil);
+
+
   } catch (error) {
       console.error("Error al eliminar la nota:", error);
   }
   };
 
 
-
-
-
-
-
 return (
   <div>
     <div>
-      <Container>
+      <Container className="mb-4">
         <Row className="justify-content-md-center">
           <Col xs lg="2">
             {perfil.map((item, index) => 
               <div key={index} className="mb-4">
-                <Card style={{ width: '18rem' }} bg={'dark'} text='white'>
+                <Card border="light" style={{ width: '18rem' }} bg={'dark'} text='white'>
                   <Card.Img variant="top" src="holder.js/100px180" />
                   <Card.Body>
-                    <Card.Title>{item.nombre_usuario}</Card.Title>
-                    <Card.Text>{item.comentario_usuario}</Card.Text>
-                    <Button variant="primary" className="mb-4" >Actualizar datos</Button>
+                    <Card.Title>{item.notas}</Card.Title>
+                    <Card.Text>{item.id_listado}</Card.Text>
+                    <ModalProfile id_listado={item.id_listado} notaInicial={item.nota}/>
                     <Button variant="danger" onClick={() => deleteCart(index, item.id_listado)}>Eliminar datos</Button>
                   </Card.Body>
                 </Card>
