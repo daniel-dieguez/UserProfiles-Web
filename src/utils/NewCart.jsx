@@ -60,11 +60,11 @@ export default function NewProfile() {
 return (
   <div>
     <div>
-      <Container className="mb-4">
+      <Container className="mb-4" style={{ width: '18rem' }} >
         <Row className="justify-content-md-center">
           <Col xs lg="2">
             {perfil.map((item, index) => 
-              <div key={index} className="mb-4">
+              <div key={index} className="mb-4"> 
                 <Card border="light" style={{ width: '18rem' }} bg={'dark'} text='white'>
                   <Card.Img variant="top" src={item.data} />
                   <Card.Body>

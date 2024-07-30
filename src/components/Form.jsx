@@ -7,7 +7,7 @@ export default function Form() {
 
     const [errores, setErrores] = useState("");
 
-    const create = ({email, text}) =>{
+    const create = ({images}) =>{
 
 
   const errores = {};
@@ -19,10 +19,10 @@ export default function Form() {
 
   return (
     <div>
-    <Container className='mt-5'>
+    <Container className='mt-5' >
       <Row>
         <Col ms="12" md={4} >
-          <Card body>
+          <Card body >
             <h3>
            Usuario 
             </h3>
