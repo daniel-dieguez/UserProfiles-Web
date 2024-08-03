@@ -20,11 +20,11 @@ export default function Form() {
   return (
     <div>
     <Container className='mt-5' >
-      <Row>
-        <Col ms="12" md={4} >
+      <Row >
+        <Col ms="12" md={4} className="mb-4" >
           <Card body >
             <h3>
-           Usuario 
+           Ingrese imagen 
             </h3>
             <hr></hr>
             <Register errores={errores} onSubmitCallback={create}></Register>

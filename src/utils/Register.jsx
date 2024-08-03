@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button} from 'react-bootstrap';
-import { convertidor } from '../helpers/Convertor';
+import Swal from 'sweetalert2';
 
 export default function Register({errores, onSubmitCallback}) {
 
@@ -27,6 +27,11 @@ export default function Register({errores, onSubmitCallback}) {
         method: 'POST',
         body: formData,
       });
+      Swal.fire({
+        icon: "success",
+        title: "Carga exitosa",
+        text: "Se agrego nueva carta",
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -39,14 +44,10 @@ export default function Register({errores, onSubmitCallback}) {
     }
   };
 
-    
-  
-
-  
 
 
   return (
-      <Form onSubmit={submitForm}>
+      <Form  onSubmit={submitForm} className="mt-4">
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Comentarios</Form.Label>
           <Form.Control

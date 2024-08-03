@@ -58,29 +58,22 @@ export default function NewProfile() {
 
 
 return (
-  <div>
-    <div>
-      <Container className="mb-4" style={{ width: '18rem' }} >
-        <Row className="justify-content-md-center">
-          <Col xs lg="2">
-            {perfil.map((item, index) => 
-              <div key={index} className="mb-4"> 
-                <Card border="light" style={{ width: '18rem' }} bg={'dark'} text='white'>
-                  <Card.Img variant="top" src={item.data} />
-                  <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>{item.id}</Card.Text>
-                    <ModalProfile id={item.id} fotoPefil={item.name}/>
-                    <Button variant="danger" onClick={() => deleteCart(index, item.id)}>Eliminar datos</Button>
-                  </Card.Body>
-                </Card>
-              </div>
-            )}
-          </Col>
-        </Row>
-      </Container>
-
-    </div>
-  </div>
-)
+  <Container className="mb-4">
+  <Row className="justify-content-md-center">
+    {perfil.map((item, index) => (
+      <Col key={index} xs={12} sm={6} md={4} className="mb-4">
+        <Card border="light" bg={'dark'} text='white' style={{ width: '20rem' }}>
+          <Card.Img variant="top" src={item.data} />
+          <Card.Body>
+            <Card.Title>{item.nombre_Completo}</Card.Title>
+            <Card.Text>{item.comentario_user}</Card.Text>
+            <ModalProfile id={item.id} fotoPerfil={item.name} />
+            <Button variant="danger" onClick={() => deleteCart(index, item.id)}>Eliminar datos</Button>
+          </Card.Body>
+        </Card>
+      </Col>
+    ))}
+  </Row>
+</Container>
+);
 }

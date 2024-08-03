@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Imagen from '../img/imagen1.jpg';
 import { useRef, useState } from 'react';
@@ -36,4 +36,4 @@ export default function UpLoad() {
   </Card>
   </div>
   )
-}
+}*/
