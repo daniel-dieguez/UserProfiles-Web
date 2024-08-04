@@ -12,6 +12,8 @@ import { convertidor } from '../helpers/Convertor';
 function ModalProfile({ id }) {
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [nombreUsuario, setNombreUsuario] = useState('');
+  const [comentario, setComentario]  = useState('');
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -29,11 +31,18 @@ function ModalProfile({ id }) {
       return;
     }
 
-    const formData = new FormData();
+    /*const formData = new FormData();
     formData.append('file', selectedFile);
+    formData.append('nombre_completo',nombreUsuario);
+    formData.append('comentario_user', comentario)
+    */
 
-    try {
-      const response = await axios.put(`http://localhost:9000/file/UpFile/${id}`, formData, {
+    try {                                                                      //abajo de esta coma se agrega el formData de arriba     
+      const response = await axios.put(`http://localhost:9000/file/UpFile/${id}`, {
+        file:selectedFile,
+        nombre_completo:nombreUsuario,
+        comentario_user:comentario
+      }, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -77,8 +86,23 @@ function ModalProfile({ id }) {
                 placeholder='cambia imagen'
                 onChange={e => setSelectedFile(e.target.files[0])}
               />
+            </Form.Group >
+            <Form.Group className="mb-2">
+              <Form.Label>Actualiza tu nombre</Form.Label>
+                <Form.Control 
+                type='text'
+                placeholder='Agrega el nombre nuevo'
+                onChange={e => setNombreUsuario(e.target.value)}/>
             </Form.Group>
-          </Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Actualiza tu nombre</Form.Label>
+                <Form.Control 
+                as="textarea"
+                placeholder='Agrega tu comentario'
+                onChange={e => setComentario(e.target.value)}
+                rows={3}/>
+            </Form.Group >
+          </Form>          
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
