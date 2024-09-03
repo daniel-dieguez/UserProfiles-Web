@@ -1,4 +1,6 @@
 # Bienvenido a mi repositorio
+[![React Version](https://img.shields.io/badge/React-18.0.0-blue.svg)](https://reactjs.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ¡Hola! Bienvenido a mi repositorio, espero que te sea útil.
 
